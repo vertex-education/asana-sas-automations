@@ -1,0 +1,16 @@
+-- =============================================================================
+-- School Assignment Sync | 01_seed.sql
+-- DOCUMENTATION ONLY. NOT PART OF ANY DEPLOY.
+-- =============================================================================
+-- History: during the sandbox build, SCHOOL_REP_ASSIGNMENT_SEED was loaded once
+-- from an export of the School Assignment Sheet. It was used to recover AP rep
+-- values after the legacy "AP Representative" field was removed from monthly
+-- close projects.
+--
+-- Production does not need it: intended state is read live from the School
+-- Assignment Sheet by REFRESH_MASTER_STATE on every run.
+--
+-- If a future recovery needs the seed data, query the sandbox copy
+-- (see tools/export_sandbox_ddl.sql for its definition) rather than
+-- recreating it here.
+-- =============================================================================

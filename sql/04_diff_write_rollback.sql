@@ -1,0 +1,24 @@
+-- =============================================================================
+-- School Assignment Sync | 04_diff_write_rollback.sql
+-- Comparison views and the procedures that WRITE to Asana. Deployed by runbooks/deploy.md.
+--
+-- Objects (paste views first, then procedures):
+--   V_FANOUT_DELTA       intended vs. actual differences to write
+--   V_FANOUT_PREVIEW     human-readable preview of pending changes
+--   V_UNRESOLVED_REPS    reps on the sheet with no Asana user match
+--   RUN_FANOUT(...)      writes deltas; arguments are dry-run flag, client
+--                        filter, and write cap (RECONCILE_FANOUT calls it as
+--                        RUN_FANOUT(<dry_run>, NULL, <max_writes>)). Logs to
+--                        FANOUT_RUN_LOG.
+--   ROLLBACK_FANOUT(...) reverts writes recorded in FANOUT_RUN_LOG
+--
+-- RULES
+--   * CREATE OR REPLACE VIEW / PROCEDURE is correct here.
+--   * Unqualified names only (no sandbox database/schema qualifiers).
+--   * Open item: if RUN_FANOUT handles an over-cap delta by RETURNING an abort
+--     message instead of raising an error, the task shows SUCCEEDED and the
+--     alert will not flag it. Preferred fix: RAISE on abort inside RUN_FANOUT.
+-- =============================================================================
+
+-- TODO-EXPORT: paste the rows from tools/export_sandbox_ddl.sql where TARGET_FILE is 'sql/04_diff_write_rollback.sql', then delete this line.
+

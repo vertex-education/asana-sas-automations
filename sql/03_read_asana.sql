@@ -1,0 +1,25 @@
+-- =============================================================================
+-- School Assignment Sync | 03_read_asana.sql
+-- Procedures that READ from Asana. Deployed by runbooks/deploy.md.
+--
+-- Objects (paste in this order):
+--   LOAD_ASANA_USER_MAP()    Python. Refreshes ASANA_USER_MAP from the Asana
+--                            workspace users endpoint. Uses ASANA_API_INTEGRATION
+--                            and secret ASANA_PAT.
+--   REFRESH_MASTER_STATE()   Reads the School Assignment Sheet into MASTER_STATE.
+--                            Return string reports schools missing an SFO Client.
+--   DISCOVER_TARGETS()       Reads role-field values on tasks in projects enabled
+--                            in FANOUT_SCOPE into ACTUAL_STATE. Resolves each
+--                            project's own field IDs (no hardcoded field GIDs).
+--
+-- RULES
+--   * CREATE OR REPLACE PROCEDURE is correct here (no data is held).
+--   * Unqualified names only. Remove any sandbox database/schema qualifiers;
+--     the PR check fails if the sandbox schema name appears in sql/.
+--   * Keep EXTERNAL_ACCESS_INTEGRATIONS = (ASANA_API_INTEGRATION) and
+--     SECRETS = ('cred' = ASANA_PAT) exactly as exported; production reuses
+--     those names (see admin/a2_asana_access.sql).
+-- =============================================================================
+
+-- TODO-EXPORT: paste the rows from tools/export_sandbox_ddl.sql where TARGET_FILE is 'sql/03_read_asana.sql', then delete this line.
+
